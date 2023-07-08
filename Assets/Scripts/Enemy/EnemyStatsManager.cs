@@ -50,4 +50,9 @@ public class EnemyStatsManager : CharacterStatsManager, IDamageable, IPoolItem
     {
 
     }
+
+    public void Die()
+    {
+        throw new NotImplementedException();
+    }
 }

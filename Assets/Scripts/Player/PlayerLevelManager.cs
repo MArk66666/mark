@@ -21,6 +21,7 @@ public class PlayerLevelManager : MonoBehaviour
     public Action<UpgradeData[]> OnChooseUpgrade;
 
     private PlayerManager _player;
+
     private void Awake()
     {
         _player = GetComponent<PlayerManager>();
@@ -95,7 +96,7 @@ public class PlayerLevelManager : MonoBehaviour
         {
             _player.playerWeaponManager.UpgradeWeapon(selectedUpgrades[selectedUpgradeId]);
         }
-        else if(upgradeData.upgradeType == UpgradeType.ItemUnlock)
+        else if (upgradeData.upgradeType == UpgradeType.ItemUnlock)
         {
             _player.passiveItem.Equip(upgradeData.item);
             UpdateListUpgrades(upgradeData.item.upgrades);

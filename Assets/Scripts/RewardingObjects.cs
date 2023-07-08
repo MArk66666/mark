@@ -22,4 +22,9 @@ public class RewardingObjects : MonoBehaviour, IDamageable
         _currentHealth -= damage;
         _indicator.SpawnIndicator(transform.position, damage);
     }
+
+    public void Die()
+    {
+        throw new System.NotImplementedException();
+    }
 }
