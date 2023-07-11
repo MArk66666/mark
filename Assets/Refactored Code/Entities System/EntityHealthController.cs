@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityHealthController : MonoBehaviour, IDamageable
+public class EntityHealthController : MonoBehaviour, IDamageable, IHealable
 {
     [SerializeField] private int health = 100;
 
@@ -15,6 +15,11 @@ public class EntityHealthController : MonoBehaviour, IDamageable
     {
         _currentHealth = health;
         OnHealthChanged?.Invoke(_currentHealth);
+    }
+
+    private void Update()
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, health);
     }
 
     public void TakeDamage(int damage)
@@ -29,5 +34,11 @@ public class EntityHealthController : MonoBehaviour, IDamageable
     public void Die()
     {
 
+    }
+
+    public void Heal(int amount)
+    {
+        _currentHealth += amount;
+        OnHealthChanged?.Invoke(_currentHealth);
     }
 }

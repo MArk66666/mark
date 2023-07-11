@@ -8,7 +8,7 @@ public class UserInterfaceController : MonoBehaviour
     [SerializeField] private Player playerSetup;
     [SerializeField] private Slider healthSlider;
 
-    private float _currentHealthValue = 0f;
+    private float _currentHealthValue = 100f;
     private float _targetHealthValue = 0f;
 
     private void Start()

@@ -6,19 +6,19 @@ using Zenject;
 public class DamageableCollider : MonoBehaviour
 {
     [Header("Damage parametrs")]
-    [SerializeField, Range(.1f,1f)] private float _rateDamage = 0.5f;
+    [SerializeField, Range(.1f, 1f)] private float _rateDamage = 0.5f;
     [SerializeField] private int _damage = 1;
 
     private Coroutine _dealingDamageCoroutine;
-    private IDamageable damageableEntity;
+    private IDamageable _damageableEntity;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (damageableEntity == null)
-            damageableEntity = collision.gameObject.GetComponent<IDamageable>();
-
-        if (damageableEntity == null)
+        if (_damageableEntity == null)
+        {
+            _damageableEntity = collision.gameObject.GetComponent<IDamageable>();
             return;
+        }
 
         if (_dealingDamageCoroutine == null)
         {
@@ -27,7 +27,7 @@ public class DamageableCollider : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        damageableEntity = null;
+        _damageableEntity = null;
 
         if (_dealingDamageCoroutine != null)
         {
@@ -39,8 +39,7 @@ public class DamageableCollider : MonoBehaviour
     {
         while (true)
         {
-            //_playerManager.playerStatsManager.TakeDamage(_damage);
-            damageableEntity.TakeDamage(_damage);
+            _damageableEntity.TakeDamage(_damage);
             yield return new WaitForSeconds(_rateDamage);
         }
     }

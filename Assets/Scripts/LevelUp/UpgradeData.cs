@@ -19,5 +19,4 @@ public class UpgradeData : ScriptableObject
 
     [Header("Upgrade Simple Stats")]
     public WeaponStats weaponUpgradeStats;
-    public ItemStats itemUpgradeStats;
 }

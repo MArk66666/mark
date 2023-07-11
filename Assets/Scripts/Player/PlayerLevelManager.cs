@@ -87,23 +87,20 @@ public class PlayerLevelManager : MonoBehaviour
     {
         UpgradeData upgradeData = selectedUpgrades[selectedUpgradeId];
 
-        if(upgradeData.upgradeType == UpgradeType.WeaponUnlock)
+        if (upgradeData.upgradeType == UpgradeType.WeaponUnlock)
         {
             _player.playerWeaponManager.AddWeapon(selectedUpgrades[selectedUpgradeId].weaponData);
             upgrades.AddRange(selectedUpgrades[selectedUpgradeId].weaponData.upgradesData);
         }
-        else if(upgradeData.upgradeType == UpgradeType.WeaponUpgrade)
+        else if (upgradeData.upgradeType == UpgradeType.WeaponUpgrade)
         {
             _player.playerWeaponManager.UpgradeWeapon(selectedUpgrades[selectedUpgradeId]);
         }
         else if (upgradeData.upgradeType == UpgradeType.ItemUnlock)
         {
-            _player.passiveItem.Equip(upgradeData.item);
-            UpdateListUpgrades(upgradeData.item.upgrades);
         }
-        else if(upgradeData.upgradeType == UpgradeType.ItemUpgrade)
+        else if (upgradeData.upgradeType == UpgradeType.ItemUpgrade)
         {
-            _player.passiveItem.UpgradeItem(upgradeData);
         }
 
         acquiredUpgrades.Add(upgradeData);
